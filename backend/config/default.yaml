@@ -1,0 +1,61 @@
+# Rule limits, thresholds, and ranking weights. Source of truth: docs/DECISIONS.md.
+# null means "not decided yet" (never zero). Change config_version whenever a value changes;
+# every match run records the version it used.
+
+config_version: 1
+
+rules:
+  off_route:
+    cap_km: 40                      # D-010: round trip per off-route stop, by road
+    compare_in_metres: true         # 40.0 km passes, 40.001 km fails
+    on_route_tolerance_m: 500       # PROVISIONAL: how close counts as on the route
+    corridor_prefilter_km: 40       # straight-line pre-filter; discards only, never approves
+
+  job_caps:                         # D-011; band edges belong to the lower band (D-012)
+    bands:
+      - { max_route_km: 500,  max_jobs_total: 3,  max_jobs_per_day: null }
+      - { max_route_km: 1250, max_jobs_total: 5,  max_jobs_per_day: 3 }
+      - { max_route_km: 2000, max_jobs_total: 8,  max_jobs_per_day: 4 }
+      - { max_route_km: null, max_jobs_total: 10, max_jobs_per_day: 4 }  # null = no upper limit
+
+  day:
+    timezone: Asia/Kolkata          # D-013: day resets at 12:00 am
+    counted_on: pickup              # D-014: a job counts toward the day of its pickup
+
+  bundling:                         # D-015, D-016
+    pickup_radius_km: 5
+    drop_radius_km: 5
+    method: smallest_enclosing_circle
+
+  budget:                           # D-017, D-018
+    low_multiplier: 1.25            # up to blend_start_km
+    high_multiplier: 1.35           # from blend_end_km
+    blend_start_km: 1000
+    blend_end_km: 1500
+    time_basis: active_time         # driving + loading + unloading + waiting; rest excluded
+    hard_cap: true
+
+planner:
+  strategy: greedy
+  lookahead_horizon_km: null            # OPEN: how far ahead along the route a pickup may be
+  allow_simultaneous_non_bundled: null  # OPEN: may two non-bundled cargos be on board together
+
+ranking:                            # PROVISIONAL baseline weights; must sum to 1.0, tune later
+  weights:
+    net_contribution: 0.35
+    extra_distance: 0.15
+    pickup_access: 0.15
+    timing_slack: 0.10
+    compatibility_confidence: 0.10
+    listing_reliability: 0.10
+    route_alignment: 0.05
+
+routing:
+  timeout_seconds: 10
+  batch_size: 100
+  use_cache_fallback: true
+  cache_results_count_as_verified: false   # cached routes are never presented as verified
+
+ml:
+  enabled: true
+  fallback_to_baseline: true
