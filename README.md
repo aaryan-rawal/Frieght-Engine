@@ -7,7 +7,7 @@ deterministic rules. Machine learning ranks what survives the rules; it can neve
 This is a standalone project (Mini Project / MP). It is not the larger Open Project (OP).
 
 - GitHub repository: `Frieght-Engine`
-- Local folder: `C:\Users\Aaryan Rawal\Desktop\Projects\OptiFreight AI`
+- Local folder: `.................\Desktop\Projects\OptiFreight AI`
 
 ## Status
 
