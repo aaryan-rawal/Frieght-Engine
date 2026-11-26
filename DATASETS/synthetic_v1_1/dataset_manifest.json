@@ -1,0 +1,41 @@
+{
+  "dataset_version": "optifreight-synthetic-v1.1",
+  "scenario_count": 100000,
+  "trip_count": 10000,
+  "candidates_per_trip": 10,
+  "source_type": "simulated",
+  "feature_schema_version": "1.0",
+  "files": {
+    "simulated_backhaul_scenarios.csv": {
+      "rows": 100000,
+      "sha256": "fbc358acf0c5a16f17f3b4a61745b1901c926f53192076aeeea9225ee24d5431",
+      "bytes": 59179327
+    },
+    "model_a_labeled.csv": {
+      "rows": 100000,
+      "sha256": "7f4eb1ad95116b13b0bd2b365f8668ba2d43fe6965db45dcde68610f74e1b9c4",
+      "bytes": 28027288
+    },
+    "model_b_labeled.csv": {
+      "rows": 100000,
+      "sha256": "9665d91083a031c2afda62564364495bd8008c52006a93998d3050daa7fd5df9",
+      "bytes": 27930838
+    },
+    "approved_model_a_labels.md": {
+      "rows": null,
+      "sha256": "9cb0259f0117ab6ddee49e1518209fa2206ce109f8ca1a197f154bcd91980964",
+      "bytes": 982
+    },
+    "approved_model_b_labels.md": {
+      "rows": null,
+      "sha256": "2039f4e6cce7d5d669723815b0179196fbb136b3c1c5b7a821f6e85ec63c3c4a",
+      "bytes": 954
+    },
+    "generation_config.json": {
+      "rows": null,
+      "sha256": "40fc21cae8060fb13a7d5e226aefefa5ad580f4e6cab34ec3539c162c60a1e15",
+      "bytes": 1124
+    }
+  },
+  "label_semantics": "synthetic simulation proxies; not observed outcomes"
+}
