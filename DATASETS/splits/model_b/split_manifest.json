@@ -1,0 +1,122 @@
+{
+  "schema_version": 2,
+  "feature_schema_version": "1.0",
+  "model": "b",
+  "input_file_name": "model_b_labeled.csv",
+  "input_sha256": "eca3741e9b3dbef47d7778ac0ab892d5bdb9a9c3fe440bde4b48a40949ec1b4a",
+  "label_definition_file_name": "label_definition",
+  "label_definition_original_file_name": "approved_model_b_labels.md",
+  "label_definition_sha256": "56e0a6e277370db1ef89b458920df7ba1e69220adf6b45119053787f4cc71eb0",
+  "target_definitions": {
+    "delay_minutes": {
+      "unit": "minutes",
+      "definition_file": "label_definition"
+    },
+    "incremental_cost_inr": {
+      "unit": "INR",
+      "definition_file": "label_definition"
+    }
+  },
+  "source_datasets": [
+    "optifreight_synthetic_v1"
+  ],
+  "group_column": "trip_id",
+  "timestamp_column": "observed_at",
+  "timezone_source_column": "timestamp_source_timezone",
+  "timestamp_normalization": "ISO-8601 timestamps normalized to UTC; source timezone metadata retained.",
+  "timestamp_source_counts": {
+    "Asia/Kolkata": 100000
+  },
+  "split_method": "chronological trip-group split with strictly non-overlapping timestamp ranges",
+  "seed": 42,
+  "target_row_fractions": {
+    "train": 0.6,
+    "validation": 0.2,
+    "test": 0.2
+  },
+  "rows": 100000,
+  "groups": 10000,
+  "group_order_chronological": true,
+  "source_type_counts": {
+    "simulated": 100000
+  },
+  "leakage_audit": {
+    "trip_id": {
+      "train_validation_overlap_count": 0,
+      "train_test_overlap_count": 0,
+      "validation_test_overlap_count": 0,
+      "unseen_test_group_count": 2000
+    },
+    "vehicle_id": {
+      "train_validation_overlap_count": 0,
+      "train_test_overlap_count": 0,
+      "validation_test_overlap_count": 0,
+      "unseen_test_group_count": 2000
+    },
+    "driver_id": {
+      "train_validation_overlap_count": 0,
+      "train_test_overlap_count": 0,
+      "validation_test_overlap_count": 0,
+      "unseen_test_group_count": 2000
+    },
+    "cargo_id": {
+      "train_validation_overlap_count": 0,
+      "train_test_overlap_count": 0,
+      "validation_test_overlap_count": 0,
+      "unseen_test_group_count": 20000
+    },
+    "route_corridor_id": {
+      "train_validation_overlap_count": 0,
+      "train_test_overlap_count": 0,
+      "validation_test_overlap_count": 0,
+      "unseen_test_group_count": 2000
+    },
+    "source_record_id": {
+      "train_validation_overlap_count": 0,
+      "train_test_overlap_count": 0,
+      "validation_test_overlap_count": 0,
+      "unseen_test_group_count": 20000
+    }
+  },
+  "allowed_entity_overlap_columns": [],
+  "entity_overlap_policy": "Cross-split overlaps are rejected unless the entity column is explicitly listed in allowed_entity_overlap_columns.",
+  "splits": {
+    "train": {
+      "rows": 60000,
+      "groups": 6000,
+      "row_fraction": 0.6,
+      "min_timestamp_utc": "2024-01-01T00:00:00+00:00",
+      "max_timestamp_utc": "2024-03-24T07:40:00+00:00",
+      "source_types": {
+        "simulated": 60000
+      },
+      "sha256": "5b934ef6f772cadd90130437e6d1c1fb0723065f7e0ea116ad23025b23037896"
+    },
+    "validation": {
+      "rows": 20000,
+      "groups": 2000,
+      "row_fraction": 0.2,
+      "min_timestamp_utc": "2024-03-24T08:00:00+00:00",
+      "max_timestamp_utc": "2024-04-21T02:20:00+00:00",
+      "source_types": {
+        "simulated": 20000
+      },
+      "sha256": "ec5213032c05717b1fe399818d641437fea804d54a0569e312dac07bb542a008"
+    },
+    "test": {
+      "rows": 20000,
+      "groups": 2000,
+      "row_fraction": 0.2,
+      "min_timestamp_utc": "2024-04-21T02:40:00+00:00",
+      "max_timestamp_utc": "2024-05-18T21:00:00+00:00",
+      "source_types": {
+        "simulated": 20000
+      },
+      "sha256": "1fb6522da2b1e04a46295785c0f59c9de767a4b594e43193d0db3ff33cc9d3b7"
+    }
+  },
+  "created_at_utc": "2026-11-25T05:43:17.991897+00:00",
+  "training_performed": false,
+  "test_set_opened_for_training_or_tuning": false,
+  "label_semantics": "Provided by the dataset owner; not inferred by this tool."
+}
