@@ -1,0 +1,118 @@
+{
+  "schema_version": 2,
+  "feature_schema_version": "1.0",
+  "model": "a",
+  "input_file_name": "model_a_labeled.csv",
+  "input_sha256": "5f57819268f1997f96f39be32d4925d9ee3efeafb87b46ba7b21d1b52f153e88",
+  "label_definition_file_name": "label_definition",
+  "label_definition_original_file_name": "approved_model_a_labels.md",
+  "label_definition_sha256": "d48cea8c4fc77f8275e502432d8de24c88748099fda54c4d3817e1924ee8338d",
+  "target_definitions": {
+    "label_score": {
+      "unit": "score points on the approved 0-100 scale",
+      "definition_file": "label_definition"
+    }
+  },
+  "source_datasets": [
+    "optifreight_synthetic_v1"
+  ],
+  "group_column": "trip_id",
+  "timestamp_column": "observed_at",
+  "timezone_source_column": "timestamp_source_timezone",
+  "timestamp_normalization": "ISO-8601 timestamps normalized to UTC; source timezone metadata retained.",
+  "timestamp_source_counts": {
+    "Asia/Kolkata": 100000
+  },
+  "split_method": "chronological trip-group split with strictly non-overlapping timestamp ranges",
+  "seed": 42,
+  "target_row_fractions": {
+    "train": 0.6,
+    "validation": 0.2,
+    "test": 0.2
+  },
+  "rows": 100000,
+  "groups": 10000,
+  "group_order_chronological": true,
+  "source_type_counts": {
+    "simulated": 100000
+  },
+  "leakage_audit": {
+    "trip_id": {
+      "train_validation_overlap_count": 0,
+      "train_test_overlap_count": 0,
+      "validation_test_overlap_count": 0,
+      "unseen_test_group_count": 2000
+    },
+    "vehicle_id": {
+      "train_validation_overlap_count": 0,
+      "train_test_overlap_count": 0,
+      "validation_test_overlap_count": 0,
+      "unseen_test_group_count": 2000
+    },
+    "driver_id": {
+      "train_validation_overlap_count": 0,
+      "train_test_overlap_count": 0,
+      "validation_test_overlap_count": 0,
+      "unseen_test_group_count": 2000
+    },
+    "cargo_id": {
+      "train_validation_overlap_count": 0,
+      "train_test_overlap_count": 0,
+      "validation_test_overlap_count": 0,
+      "unseen_test_group_count": 20000
+    },
+    "route_corridor_id": {
+      "train_validation_overlap_count": 0,
+      "train_test_overlap_count": 0,
+      "validation_test_overlap_count": 0,
+      "unseen_test_group_count": 2000
+    },
+    "source_record_id": {
+      "train_validation_overlap_count": 0,
+      "train_test_overlap_count": 0,
+      "validation_test_overlap_count": 0,
+      "unseen_test_group_count": 20000
+    }
+  },
+  "allowed_entity_overlap_columns": [],
+  "entity_overlap_policy": "Cross-split overlaps are rejected unless the entity column is explicitly listed in allowed_entity_overlap_columns.",
+  "splits": {
+    "train": {
+      "rows": 60000,
+      "groups": 6000,
+      "row_fraction": 0.6,
+      "min_timestamp_utc": "2024-01-01T00:00:00+00:00",
+      "max_timestamp_utc": "2024-03-24T07:40:00+00:00",
+      "source_types": {
+        "simulated": 60000
+      },
+      "sha256": "9b9b3f661372a09c9617ec74f4e1255e81344d58179769a0e401fa4af837ff36"
+    },
+    "validation": {
+      "rows": 20000,
+      "groups": 2000,
+      "row_fraction": 0.2,
+      "min_timestamp_utc": "2024-03-24T08:00:00+00:00",
+      "max_timestamp_utc": "2024-04-21T02:20:00+00:00",
+      "source_types": {
+        "simulated": 20000
+      },
+      "sha256": "b07243b3b0aa58de74b8044f35f3e5d56bdb1eaf4438da2ff76f8cb02b499b94"
+    },
+    "test": {
+      "rows": 20000,
+      "groups": 2000,
+      "row_fraction": 0.2,
+      "min_timestamp_utc": "2024-04-21T02:40:00+00:00",
+      "max_timestamp_utc": "2024-05-18T21:00:00+00:00",
+      "source_types": {
+        "simulated": 20000
+      },
+      "sha256": "caa1489b38d37c3040bb0f26ec5a5feed00d730a53907694da79086564822980"
+    }
+  },
+  "created_at_utc": "2026-11-25T05:43:13.610464+00:00",
+  "training_performed": false,
+  "test_set_opened_for_training_or_tuning": false,
+  "label_semantics": "Provided by the dataset owner; not inferred by this tool."
+}
