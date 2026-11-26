@@ -1,0 +1,40 @@
+{
+  "dataset_version": "optifreight-synthetic-v1.0",
+  "scenario_count": 100000,
+  "trip_count": 10000,
+  "candidates_per_trip": 10,
+  "seed": 20261125,
+  "source_type": "simulated",
+  "feature_schema_version": "1.0",
+  "model_a_formula": "minimum of completion, punctuality, cost-efficiency, fulfilment-quality components",
+  "off_route_extra_distance_cap_km": 20,
+  "currency": "INR",
+  "timezone": "Asia/Kolkata",
+  "time_range_utc": {
+    "start": "2024-01-01T00:00:00Z",
+    "end": "2024-05-18T21:00:00Z"
+  },
+  "city_pool": [
+    "Delhi",
+    "Mumbai",
+    "Pune",
+    "Ahmedabad",
+    "Jaipur",
+    "Lucknow",
+    "Kanpur",
+    "Agra",
+    "Indore",
+    "Bhopal",
+    "Hyderabad",
+    "Bengaluru",
+    "Chennai",
+    "Kolkata",
+    "Surat",
+    "Nagpur",
+    "Gurugram",
+    "Noida",
+    "Coimbatore",
+    "Vadodara"
+  ],
+  "note": "Synthetic demonstration/training data only; not real-world performance evidence."
+}
