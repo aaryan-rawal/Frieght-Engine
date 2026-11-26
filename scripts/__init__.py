@@ -1,1 +1,1 @@
-
+"""OptiFreight project utility scripts."""
